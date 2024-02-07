@@ -1,0 +1,6 @@
+ato-version: ^0.2.0
+builds:
+  default:
+    entry: elec/src/rp2040-custom.ato:Rp2040Custom
+dependencies:
+- generics
