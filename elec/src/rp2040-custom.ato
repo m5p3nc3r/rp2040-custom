@@ -1,2 +1,19 @@
+import RP2040Kit from "rp2040/rp2040Kit.ato"
+import LDOReg3V3 from "regulators/regulators.ato"
+import USBCConn from "usb-connectors/usb-connectors.ato"
+import Power from "generics/interfaces.ato"
+
+
 module Rp2040Custom:
-    signal gnd
+    micro = new RP2040Kit
+    voltage_regulator = new LDOReg3V3
+    usb_connector = new USBCConn
+
+    # Connect power rails
+    usb_connector.power ~ voltage_regulator.power_in
+    voltage_regulator.power_out ~ micro.power
+
+    micro.power.gnd ~ voltage_regulator.power_in.gnd
+
+    # Connect USB data
+    usb_connector.usb2 ~ micro.usb_if
