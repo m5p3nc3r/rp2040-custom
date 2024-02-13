@@ -1,4 +1,4 @@
-import RP2040Kit from "rp2040/rp2040Kit.ato"
+import RP2040Kit from "rp2040/RP2040Kit.ato"
 import LDOReg3V3 from "regulators/regulators.ato"
 import USBCConn from "usb-connectors/usb-connectors.ato"
 import Power from "generics/interfaces.ato"
