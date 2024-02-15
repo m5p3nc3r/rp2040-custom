@@ -1,19 +1,27 @@
-import RP2040Kit from "rp2040/RP2040Kit.ato"
+import USB_Powered_RP2040Kit from "my_RP2040/RP2040Kit.ato"
+#import RP2040Kit from "rp2040/RP2040Kit.ato"
 import LDOReg3V3 from "regulators/regulators.ato"
 import USBCConn from "usb-connectors/usb-connectors.ato"
 import Power from "generics/interfaces.ato"
 
+#import EKMB1303113K from "EKMB1303113K.ato"
+
 
 module Rp2040Custom:
-    micro = new RP2040Kit
+    micro = new USB_Powered_RP2040Kit
+#    micro = new RP2040Kit
     voltage_regulator = new LDOReg3V3
     usb_connector = new USBCConn
 
+#    pir = new EKMB1303113K
+
     # Connect power rails
     usb_connector.power ~ voltage_regulator.power_in
-    voltage_regulator.power_out ~ micro.power
-
-    micro.power.gnd ~ voltage_regulator.power_in.gnd
+    voltage_regulator.power_out ~ micro.power_3v3
 
     # Connect USB data
-    usb_connector.usb2 ~ micro.usb_if
+    usb_connector.usb2 ~ micro.usb2
+
+    # Connect PIR
+ #   pir.power ~ voltage_regulator.power_out
+ #   pir.out ~ micro.gpio10

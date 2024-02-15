@@ -1,0 +1,10 @@
+import Power from "generics/interfaces.ato"
+
+component EKMB1303113K:
+    power = new Power
+
+    footprint = "EKMB1303113K"
+    mpn = "C3678676"
+    power.vcc ~ pin 1
+    power.gnd ~ pin 3
+    signal out ~ pin 2

@@ -1,9 +1,9 @@
-ato-version: ^0.2.0
+ato-version: ^0.2.14
 builds:
   default:
     entry: elec/src/rp2040-custom.ato:Rp2040Custom
 dependencies:
   - generics
   - regulators
-  - rp2040^v4.0.0
+  - rp2040^v4.0.1
   - usb-connectors^v2.0.1
